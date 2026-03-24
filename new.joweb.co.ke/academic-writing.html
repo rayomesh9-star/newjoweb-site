@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Academic Writing Services | Joweb Graphic Designers Limited</title>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <script defer src="assets/js/script.js"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="index.html">
+          <img
+            src="assets/img/Joweb Ltd Logo.svg"
+            alt="Joweb Logo"
+            class="logo"
+          />
+          <span>Joweb Graphic Designers Limited</span>
+        </a>
+        <button
+          id="navToggle"
+          class="nav-toggle"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav id="siteNav" class="site-nav">
+          <a href="index.html" aria-current="page">Home</a>
+          <a href="about.html">About</a>
+
+          <!-- Dropdown Services -->
+          <div class="dropdown">
+            <a href="services.html">Services</a>
+
+            <div class="dropdown-content">
+              <a href="graphic-design.html">Graphic Design & Branding</a>
+              <a href="web-design.html">Web Design</a>
+              <a href="printing.html">Printing & Production</a>
+              <a href="logistics.html">Transport & Logistics</a>
+            </div>
+          </div>
+          <a href="academic-writing.html" class="active">Academic Writing</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="request-quote.html" class="btn btn-primary"
+            >Request a Quote</a
+          >
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1>Academic Writing <span class="accent">Support</span></h1>
+          <p>
+            Helping students excel with well-researched, original, and
+            professionally written academic work tailored to their needs.
+          </p>
+          <a class="btn btn-primary" href="#inquiry-form"
+            >Submit With Confidence</a
+          >
+
+          >
+          <p class="btn-subtext">
+            Plagiarism-free, high-quality writing you can trust.
+          </p>
+        </div>
+        <div class="hero-art">
+          <img
+            src="assets/img/academic-placeholder.svg"
+            alt="Academic Writing Illustration"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="container">
+      <h2>Our Academic Writing Services</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Essays & Assignments</h3>
+          <p>
+            Custom-written essays and coursework tailored to specific academic
+            requirements.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Research Papers</h3>
+          <p>
+            In-depth research papers with proper citations and referencing
+            styles (APA, MLA, Harvard, Chicago).
+          </p>
+        </div>
+        <div class="card">
+          <h3>Dissertations & Theses</h3>
+          <p>
+            Comprehensive support from topic selection to final editing for
+            graduate-level work.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Proofreading & Editing</h3>
+          <p>
+            Polishing academic documents for grammar, clarity, and coherence.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Inquiry Form -->
+    <section id="inquiry-form" class="container form-section">
+      <h2>Request Academic Writing Assistance</h2>
+      <p>Fill in the form below and our team will get back to you shortly.</p>
+
+      <p id="success-msg" class="success-msg" style="display:none;">
+        ✅ Thank you! Your request has been submitted successfully. We’ll
+        contact you soon.
+      </p>
+
+      <p id="error-msg" class="error-msg" style="display:none;">
+        ❌ Oops! Something went wrong. Please try again later.
+      </p>
+
+      <form action="sendmail.php" method="POST" class="inquiry-form">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <input
+          type="text"
+          name="subject"
+          placeholder="Subject / Type of Work"
+          required
+        />
+        <textarea
+          name="message"
+          placeholder="Describe your requirements (word count, deadline, referencing style, etc.)"
+          required
+        ></textarea>
+        <button type="submit" class="btn btn-primary">Submit Request</button>
+      </form>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+      <div class="container">
+        <h2>Ready to Improve Your Academic Success?</h2>
+        <p>
+          Contact us today to get professional academic writing support that
+          ensures quality and originality.
+        </p>
+        <a class="btn btn-primary" href="contact.html">Get Started</a>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <p>Creativity in Design, Reliability in Delivery.</p>
+          <p class="muted">Serving Kenya, Uganda & Tanzania</p>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <ul>
+            <li><a href="request-quote.html">Request a Quote</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="contact">
+            <li>
+              Information House, 2nd Floor, Suite S3, Mfangano Street, Nairobi
+            </li>
+            <li><a href="mailto:sales@joweb.co.ke">sales@joweb.co.ke</a></li>
+            <li>+254 721 332 454</li>
+          </ul>
+        </div>
+      </div>
+      <div class="container">
+        <p>
+          © <span id="year"></span> Joweb Graphic Designers Limited. All rights
+          reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Floating Social Buttons -->
+    <div class="floating-socials">
+      <a
+        href="whatsapp://send?phone=254721332454"
+        class="float-btn"
+        target="_blank"
+        aria-label="Chat on WhatsApp"
+      >
+        <img src="assets/img/icons/whatsapp.png" alt="WhatsApp" />
+      </a>
+      <a
+        href="https://www.facebook.com/joweb.co.ke"
+        class="float-btn"
+        target="_blank"
+        aria-label="Visit Facebook"
+      >
+        <img src="assets/img/icons/Facebook.png" alt="Facebook" />
+      </a>
+      <a
+        href="https://www.instagram.com/jowebgraphics"
+        class="float-btn"
+        target="_blank"
+        aria-label="Visit Instagram"
+      >
+        <img src="assets/img/icons/Instagram.png" alt="Instagram" />
+      </a>
+    </div>
+  </body>
+</html>
