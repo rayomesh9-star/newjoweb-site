@@ -15,6 +15,7 @@
     />
     <link rel="stylesheet" href="assets/css/styles.css" />
     <script defer src="assets/js/script.js"></script>
+    <script defer src="assets/js/email-handler.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to main content</a>
@@ -42,7 +43,7 @@
   <!-- Dropdown Services -->
   <div class="dropdown">
     
-    <a href="services.html">Services</a>
+            <a href="services.html">Services <span class="dropdown-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span></a>
     
     <div class="dropdown-content">
       <a href="graphic-design.html">Graphic Design & Branding</a>
@@ -67,13 +68,7 @@
         <p>Tell us about your project. We’ll respond within 1 business day.</p>
       </section>
       <section class="container grid-2">
-        <form
-          class="form card"
-          name="contact"
-          method="post"
-          data-netlify="true"
-        >
-          <input type="hidden" name="form-name" value="contact" />
+        <form class="form card">
           <label
             >Full Name<input
               required
