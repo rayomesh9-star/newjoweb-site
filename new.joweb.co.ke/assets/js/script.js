@@ -2,6 +2,31 @@
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+// Dynamic active nav state
+document.addEventListener('DOMContentLoaded', () => {
+  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  
+  // Remove existing active states
+  document.querySelectorAll('.site-nav a').forEach(link => {
+    link.removeAttribute('aria-current');
+  });
+  
+  // Set active for simple links
+  document.querySelectorAll('.site-nav a[href]').forEach(link => {
+    const href = link.getAttribute('href').split('/').pop();
+    if (href === currentPath) {
+      link.setAttribute('aria-current', 'page');
+    }
+  });
+  
+  // Special handling for Services dropdown
+  const servicesDropdown = document.querySelector('.dropdown a[href="services.html"]');
+  if (servicesDropdown && currentPath === 'services.html') {
+    servicesDropdown.parentElement.classList.add('active-dropdown');
+    servicesDropdown.setAttribute('aria-current', 'page');
+  }
+});
+
 // Mobile nav toggle
 const navToggle = document.getElementById('navToggle');
 const siteNav = document.getElementById('siteNav');
@@ -27,6 +52,57 @@ document.querySelectorAll('.card, .hero h1, .cta-inner, .page-header h1, .about-
    observer.observe(el);
 });
 
+// Portfolio filter (portfolio.html only)
+document.addEventListener("DOMContentLoaded", () => {
+  const search = document.getElementById("portfolioSearch");
+  const grid = document.getElementById("portfolioGrid");
+  if (!search || !grid) return;
+
+  const cards = Array.from(grid.querySelectorAll(".portfolio-card"));
+  const chips = Array.from(document.querySelectorAll(".portfolio-chips .chip"));
+
+  let activeChip = "all";
+
+  function normalize(str) {
+    return String(str || "")
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function applyFilters() {
+    const query = normalize(search.value);
+
+    cards.forEach(card => {
+      const filterTag = card.getAttribute("data-filter-tags") || "";
+      const tags = card.getAttribute("data-tags") || "";
+      const tagsNorm = normalize(tags);
+
+      const chipMatch = activeChip === "all" || filterTag === activeChip;
+      const searchMatch = !query || tagsNorm.includes(query) || normalize(card.textContent).includes(query) || normalize(card.getAttribute("href")).includes(query);
+
+      const show = chipMatch && searchMatch;
+      card.style.display = show ? "block" : "none";
+    });
+  }
+
+  chips.forEach(chip => {
+    chip.addEventListener("click", () => {
+      chips.forEach(c => c.setAttribute("aria-pressed", "false"));
+      chip.setAttribute("aria-pressed", "true");
+      activeChip = chip.getAttribute("data-filter") || "all";
+      applyFilters();
+    });
+  });
+
+  search.addEventListener("input", () => {
+    applyFilters();
+  });
+
+  // Initial filter
+  applyFilters();
+});
 document.addEventListener("DOMContentLoaded", () => {
     const track = document.querySelector(".carousel-track");
     if (!track) return;

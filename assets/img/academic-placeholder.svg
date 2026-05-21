@@ -1,0 +1,144 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title desc">
+  <title id="title">Academic Writing Illustration</title>
+  <desc id="desc">A modern vector illustration showing a laptop, books, and a graduation cap to represent academic writing services.</desc>
+
+  <!-- ====== THEME (edit these to match your brand) ====== -->
+  <defs>
+    <!-- Brand colors -->
+    <style>
+      :root{
+        --primary:#004aad;      /* Joweb primary */
+        --primary-600:#003580;  /* darker shade */
+        --accent:#19b4ff;       /* highlight */
+        --ink:#0f172a;          /* text/dark */
+        --muted:#e6eef8;        /* light ui */
+        --paper:#ffffff;        /* white */
+      }
+    </style>
+
+    <!-- Soft shadow -->
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-opacity="0.16"></feDropShadow>
+    </filter>
+
+    <!-- Subtle background gradient blob -->
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#eef5ff"></stop>
+      <stop offset="100%" stop-color="#f7fbff"></stop>
+    </linearGradient>
+
+    <!-- Screen gradient -->
+    <linearGradient id="screenGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fdfefe"></stop>
+      <stop offset="100%" stop-color="#eaf3ff"></stop>
+    </linearGradient>
+
+    <!-- Cap tassel gradient -->
+    <linearGradient id="tasselGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="var(--accent)"></stop>
+      <stop offset="100%" stop-color="#7bd6ff"></stop>
+    </linearGradient>
+  </defs>
+
+  <!-- ====== BACKGROUND SHAPES ====== -->
+  <rect width="800" height="500" fill="url(#bgGrad)"></rect>
+  <!-- Decorative blobs -->
+  <g opacity=".35">
+    <ellipse cx="140" cy="120" rx="110" ry="60" fill="var(--muted)"></ellipse>
+    <ellipse cx="700" cy="420" rx="130" ry="70" fill="var(--muted)"></ellipse>
+    <ellipse cx="620" cy="90" rx="70" ry="38" fill="var(--muted)"></ellipse>
+  </g>
+
+  <!-- ====== BASE FLOOR ====== -->
+  <ellipse cx="400" cy="420" rx="300" ry="40" fill="#dfe9f9" opacity=".6"></ellipse>
+
+  <!-- ====== LAPTOP ====== -->
+  <g filter="url(#shadow)">
+    <!-- laptop body -->
+    <rect x="230" y="150" rx="12" ry="12" width="340" height="220" fill="var(--ink)" opacity=".9"></rect>
+    <!-- screen -->
+    <rect x="245" y="165" rx="8" ry="8" width="310" height="190" fill="url(#screenGrad)"></rect>
+    <!-- top bar -->
+    <rect x="245" y="165" width="310" height="22" fill="var(--muted)"></rect>
+    <circle cx="257" cy="176" r="4" fill="#d14"></circle>
+    <circle cx="271" cy="176" r="4" fill="#fa3"></circle>
+    <circle cx="285" cy="176" r="4" fill="#5b5"></circle>
+    <!-- screen content (doc + chart) -->
+    <rect x="265" y="200" width="170" height="120" rx="8" fill="var(--paper)" stroke="#d6e3fb"></rect>
+    <rect x="445" y="200" width="92" height="18" rx="4" fill="var(--primary)" opacity=".15"></rect>
+    <rect x="445" y="224" width="92" height="18" rx="4" fill="var(--primary)" opacity=".12"></rect>
+    <rect x="445" y="248" width="92" height="18" rx="4" fill="var(--primary)" opacity=".1"></rect>
+    <rect x="445" y="272" width="92" height="18" rx="4" fill="var(--primary)" opacity=".08"></rect>
+
+    <!-- document lines -->
+    <g stroke="#9db8e6" stroke-width="4" opacity=".7">
+      <line x1="280" y1="220" x2="420" y2="220"></line>
+      <line x1="280" y1="242" x2="410" y2="242"></line>
+      <line x1="280" y1="264" x2="395" y2="264"></line>
+      <line x1="280" y1="286" x2="415" y2="286"></line>
+      <line x1="280" y1="308" x2="355" y2="308"></line>
+    </g>
+
+    <!-- laptop base -->
+    <rect x="210" y="368" width="380" height="26" rx="6" fill="var(--ink)" opacity=".9"></rect>
+    <!-- touchpad -->
+    <rect x="380" y="372" width="40" height="16" rx="4" fill="#1e293b"></rect>
+  </g>
+
+  <!-- ====== STACK OF BOOKS ====== -->
+  <!-- bottom book -->
+  <g filter="url(#shadow)">
+    <rect x="120" y="330" width="200" height="42" rx="6" fill="var(--primary)"></rect>
+    <rect x="118" y="325" width="204" height="8" rx="4" fill="var(--primary-600)"></rect>
+    <rect x="130" y="340" width="110" height="8" rx="4" fill="#ffffff" opacity=".85"></rect>
+  </g>
+  <!-- middle book -->
+  <g filter="url(#shadow)">
+    <rect x="140" y="285" width="180" height="40" rx="6" fill="#7aa7ff"></rect>
+    <rect x="138" y="280" width="184" height="8" rx="4" fill="#5d8ef0"></rect>
+    <rect x="150" y="294" width="95" height="8" rx="4" fill="#ffffff" opacity=".9"></rect>
+  </g>
+  <!-- top book -->
+  <g filter="url(#shadow)">
+    <rect x="160" y="245" width="160" height="36" rx="6" fill="#c7dbff"></rect>
+    <rect x="158" y="240" width="164" height="8" rx="4" fill="#a9c4ff"></rect>
+    <rect x="170" y="254" width="85" height="8" rx="4" fill="#ffffff" opacity=".95"></rect>
+  </g>
+
+  <!-- ====== GRADUATION CAP ====== -->
+  <g transform="translate(520 205)" filter="url(#shadow)">
+    <!-- mortarboard -->
+    <path d="M0 20 L110 -10 L220 20 L110 50 Z" fill="var(--primary)"></path>
+    <!-- cap crown -->
+    <rect x="88" y="25" width="44" height="36" rx="6" fill="var(--primary-600)"></rect>
+    <!-- button -->
+    <circle cx="110" cy="20" r="6" fill="#0b234d"></circle>
+    <!-- tassel cord -->
+    <path d="M110,20 C130,40 145,60 150,88" fill="none" stroke="#0b234d" stroke-width="3" stroke-linecap="round"></path>
+    <!-- tassel -->
+    <path d="M150 88 q8 6 0 12 q-8 6 -16 0 q-8 -6 0 -12 q8 -6 16 0 Z" fill="url(#tasselGrad)"></path>
+  </g>
+
+  <!-- ====== SMALL ACCENTS ====== -->
+  <!-- pencil -->
+  <g transform="translate(610,350)">
+    <rect x="0" y="0" width="120" height="12" rx="6" fill="#ffd166"></rect>
+    <rect x="100" y="0" width="20" height="12" rx="6" fill="#ef476f"></rect>
+    <polygon points="0,6 -14,12 -14,0" fill="#f1c27d"></polygon>
+    <polygon points="-14,12 -22,6 -14,0" fill="#d19a66"></polygon>
+  </g>
+
+  <!-- sparkles -->
+  <g fill="var(--accent)" opacity=".8">
+    <circle cx="575" cy="130" r="3"></circle>
+    <circle cx="600" cy="115" r="2.5"></circle>
+    <circle cx="585" cy="95" r="2.5"></circle>
+  </g>
+
+  <!-- ====== BADGE (Plagiarism-free) ====== -->
+  <g transform="translate(470,120)" filter="url(#shadow)">
+    <circle cx="0" cy="0" r="26" fill="var(--paper)" stroke="#cfe1ff"></circle>
+    <path d="M-10 0 l8 8 l16 -16" fill="none" stroke="var(--primary)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+  </g>
+</svg>

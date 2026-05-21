@@ -7,7 +7,7 @@
  * 3. Replace WEB3FORMS_ACCESS_KEY below with your actual key
  */
 
-const WEB3FORMS_ACCESS_KEY = "a3bf8dae-cebd-42b9-80d8-df5115ed3c3e";
+const WEB3FORMS_ACCESS_KEY = "ce211cd6-79a0-4fcc-ba81-6a9145ce5b46";
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 const DESTINATION_EMAIL = "omegor6@gmail.com";
 
@@ -16,33 +16,32 @@ const DESTINATION_EMAIL = "omegor6@gmail.com";
  * @param {Object} formData - Form data to send
  * @returns {Promise}
  */
-function sendEmail(formData) {
-  const companyName = formData.company || "Unknown Company";
+async function sendEmail(formData) {
   const payload = {
     access_key: WEB3FORMS_ACCESS_KEY,
-    email_to: DESTINATION_EMAIL,
     name: formData.name || formData.contact || "",
     email: formData.email || "",
     phone: formData.phone || "",
-    subject: "New Quote Request from " + companyName,
+    subject: formData.subject || "New Contact from Joweb Website",
     company: formData.company || "",
     services: formData.services || "",
     budget: formData.budget || "",
     message: formData.message || formData.details || "",
   };
 
-  return fetch(WEB3FORMS_ENDPOINT, {
+  const response = await fetch(WEB3FORMS_ENDPOINT, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
-  }).then(function (response) {
-    return response.json().then(function (data) {
-      if (!data.success) {
-        throw new Error(data.message || "Form submission failed");
-      }
-      return data;
-    });
   });
+
+  const data = await response.json();
+  console.log("Web3Forms response:", data);
+
+  if (!data.success) {
+    throw new Error(data.message || "Form submission failed");
+  }
+  return data;
 }
 
 /**
@@ -108,3 +107,15 @@ document.addEventListener("DOMContentLoaded", function () {
     handleFormSubmit(form);
   });
 });
+
+// Verify Web3Forms access key status
+async function verifyWeb3FormsKey() {
+  try {
+    const response = await fetch(WEB3FORMS_ENDPOINT + "?access_key=" + WEB3FORMS_ACCESS_KEY);
+    const data = await response.json();
+    console.log("Web3Forms key verification:", data);
+    return data;
+  } catch (e) {
+    console.error("Key verification failed:", e);
+  }
+}
