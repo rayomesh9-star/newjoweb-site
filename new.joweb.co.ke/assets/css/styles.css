@@ -151,7 +151,7 @@ main {
   justify-content: space-between;
   gap: 1.5rem;
   padding: 1.2rem 0;
-  width: 100%
+  width: 100%;
 }
 
 .brand {
@@ -163,11 +163,11 @@ main {
   color: var(--text);
   transition: color .3s ease;
   flex-shrink: 0;
-  letter-spacing: -.3px
+  letter-spacing: -.3px;
 }
 
 .brand:hover {
-  color: var(--brand)
+  color: var(--brand);
 }
 
 .site-nav {
@@ -175,7 +175,10 @@ main {
   gap: .5rem;
   align-items: center;
   flex-wrap: wrap;
-  justify-content: flex-end
+  justify-content: flex-end;
+
+  /* avoid blocking toggle click on mobile */
+  pointer-events: auto;
 }
 
 .site-nav a {
@@ -234,7 +237,11 @@ main {
   padding: .65rem;
   cursor: pointer;
   border-radius: 10px;
-  transition: all .3s ease
+  transition: all .3s ease;
+
+  position: relative;
+  z-index: 3000;
+  pointer-events: auto;
 }
 
 .nav-toggle:hover {
@@ -396,8 +403,10 @@ main {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 2rem;
+  justify-content: center;
+  justify-items: center;
   align-items: start
 }
 
@@ -591,9 +600,10 @@ main {
 /* Pricing */
 .pricing .cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 2rem;
-  align-items: start
+  align-items: start;
+  justify-items: center
 }
 
 .price {
@@ -628,23 +638,82 @@ main {
     grid-template-columns: 1fr
   }
 
+  /* Mobile header: keep the menu + dropdown fully accessible */
+  .site-header {
+    z-index: 2000
+  }
+
+  /* Ensure hamburger is always clickable on mobile */
+  #navToggle,
+  .nav-toggle {
+    pointer-events: auto !important;
+    z-index: 3000 !important;
+  }
+
+  .nav {
+    padding: .7rem 0;
+    gap: .7rem;
+    position: relative;
+    z-index: 2001
+  }
+
+  .logo {
+    height: 38px;
+    max-width: 46vw
+  }
+
+  /* hide long brand text next to logo on small screens */
+  .brand {
+    min-width: 0;
+  }
+
+  .brand > span {
+    display: none;
+  }
+
+
+  .nav-toggle {
+    display: block;
+    margin-left: auto;
+    position: relative;
+    z-index: 2002
+  }
+
   .site-nav {
     display: none;
     flex-direction: column;
     align-items: flex-start;
     background: #fff;
     position: absolute;
-    top: 64px;
-    right: 4%;
-    left: 4%;
-    padding: 1rem;
+    top: 58px;
+    right: 3%;
+    left: 3%;
+    padding: 0.85rem 1rem;
     border: 1px solid #eef2f7;
     border-radius: 1rem;
-    box-shadow: 0 20px 40px rgba(10, 77, 140, .08)
+    box-shadow: 0 20px 40px rgba(10, 77, 140, .12);
+    z-index: 2003;
+    transition: opacity .2s ease, transform .2s ease;
+    transform-origin: top right;
+
+    /* when hidden it shouldn't block clicks */
+    pointer-events: none;
   }
 
-  .nav-toggle {
-    display: block
+  .site-nav[style*="display: flex"] {
+    pointer-events: auto;
+  }
+
+  /* When shown, animate the dropdown sliding in smoothly */
+  #siteNav[style*="display: flex"] {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+
+  .site-nav a {
+    width: 100%;
+    text-align: left
   }
 
   .actions {
@@ -656,6 +725,90 @@ main {
     max-width: 280px
   }
 }
+
+
+
+/* Extra small adjustments (better mobile layout for cards/grids) */
+@media (max-width: 600px) {
+  /* Make gallery cards larger and prevent cramped layouts */
+  .gallery {
+    grid-template-columns: repeat(1, 1fr) !important;
+    gap: 1.25rem;
+  }
+
+  /* Ensure features stack nicely */
+  .features {
+    grid-template-columns: repeat(1, 1fr) !important;
+    gap: 1rem;
+  }
+
+  /* Portfolio grid cards spacing */
+  .card-grid {
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  /* Make generic cards fit better */
+  .card {
+    padding: 1rem;
+  }
+
+  /* Forms/cards in content area */
+  .form-section,
+  .form {
+    width: 100%;
+  }
+
+  /* Footer: stack columns vertically on mobile */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Avoid oversized hero area on very small screens */
+  .service-hero {
+    height: 240px;
+  }
+
+  /* Contact page: make form + map fit nicely on mobile */
+  .grid-2 {
+    gap: 1.25rem;
+  }
+
+  /* the iframe map sits inside the right column */
+  iframe {
+    width: 100% !important;
+    height: 260px !important;
+    max-width: 100% !important;
+  }
+
+  /* ensure the contact form card doesn't overflow */
+  .form.card {
+    padding: 1rem !important;
+    width: 100%;
+  }
+
+  /* Academic writing page: inquiry form sizing */
+  .form-section {
+    padding: 0 0.25rem;
+  }
+
+  .inquiry-form,
+  .inquiry-form input,
+  .inquiry-form textarea {
+    width: 100% !important;
+  }
+
+  .inquiry-form textarea {
+    min-height: 140px;
+  }
+
+  .inquiry-form button {
+    width: 100%;
+  }
+}
+
+
 
 /* Social CTA Section */
 .social-cta {
@@ -1211,16 +1364,29 @@ main {
     width: 100%;
   }
 
+  /* Make the Services dropdown feel like a normal clickable menu item */
   .dropbtn {
     width: 100%;
     text-align: left;
+    cursor: pointer;
+    pointer-events: auto;
   }
 
   .dropdown-content {
     position: static;
     box-shadow: none;
+    pointer-events: auto;
+  }
+
+  /* On touch devices, hover is unreliable: allow opening dropdown by clicking */
+  .dropdown:focus-within .dropdown-content {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
   }
 }
+
 
 .carousel {
   position: relative;
