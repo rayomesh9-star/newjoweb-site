@@ -28,15 +28,38 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Mobile nav toggle
-const navToggle = document.getElementById('navToggle');
-const siteNav = document.getElementById('siteNav');
-if (navToggle && siteNav) {
+(function () {
+  const navToggle = document.getElementById('navToggle');
+  const siteNav = document.getElementById('siteNav');
+  if (!navToggle || !siteNav) return;
+
+  // Ensure consistent starting state
+  if (window.matchMedia('(max-width: 980px)').matches) {
+    // CSS controls visibility; keep JS in sync with inline style only when needed
+    if (!siteNav.style.display) siteNav.style.display = 'none';
+  }
+
   navToggle.addEventListener('click', () => {
-    const open = siteNav.style.display === 'flex';
-    siteNav.style.display = open ? 'none' : 'flex';
-    navToggle.setAttribute('aria-expanded', String(!open));
+    // Hard toggle regardless of computed/CSS rules.
+    // Ensure the nav becomes visible and interactive.
+    const isOpen = siteNav.getAttribute('data-open') === 'true';
+
+    if (isOpen) {
+      siteNav.style.display = 'none';
+      siteNav.style.pointerEvents = 'none';
+      siteNav.setAttribute('data-open', 'false');
+      navToggle.setAttribute('aria-expanded', 'false');
+      return;
+    }
+
+    // closing any other opened state (if needed)
+    siteNav.style.display = 'flex';
+    siteNav.style.pointerEvents = 'auto';
+    siteNav.setAttribute('data-open', 'true');
+    navToggle.setAttribute('aria-expanded', 'true');
+    navToggle.classList.add('active');
   });
-}
+})();
 
 // Simple reveal-on-scroll
 const observer = new IntersectionObserver(entries => {
