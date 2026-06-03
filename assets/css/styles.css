@@ -344,12 +344,104 @@ main {
   box-shadow: 0 6px 18px rgba(10, 77, 140, .15);
 }
 
+/* Privacy policy aesthetic */
+.privacy-page {
+  margin: 2rem 0 0;
+}
+
+.privacy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem auto 2rem;
+}
+
+.privacy-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: linear-gradient(180deg, #ffffff, #f8fbff);
+  border: 1px solid #e6eefb;
+  padding: 1.3rem 1.2rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .04);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.privacy-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(500px 180px at 15% 0%, rgba(15, 178, 229, .18), transparent 55%),
+    radial-gradient(420px 160px at 90% 10%, rgba(10, 77, 140, .12), transparent 52%);
+  opacity: 0;
+  transition: opacity .25s ease;
+  pointer-events: none;
+}
+
+.privacy-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(10, 77, 140, .35);
+  box-shadow: 0 18px 40px rgba(10, 77, 140, .18);
+}
+
+.privacy-card:hover::before {
+  opacity: 1;
+}
+
+.privacy-card h3 {
+  position: relative;
+  margin: 0 0 .6rem;
+  color: var(--brand);
+  font-size: 1.1rem;
+}
+
+.privacy-card p {
+  position: relative;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.privacy-card .badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: .9rem;
+  padding: .35rem .65rem;
+  border-radius: 999px;
+  background: rgba(10, 77, 140, .06);
+  border: 1px solid rgba(10, 77, 140, .12);
+  color: var(--brand);
+  font-weight: 700;
+  font-size: .85rem;
+}
+
+.privacy-card .badge::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  box-shadow: 0 0 0 4px rgba(15, 178, 229, .14);
+}
+
+@media (max-width: 600px) {
+  .privacy-grid {
+    gap: 1rem;
+  }
+
+  .privacy-card {
+    padding: 1.1rem;
+  }
+}
 
 .portfolio .card:hover {
   transform: translateY(-4px) scale(1.02);
   box-shadow: 0 8px 20px rgba(10, 77, 140, 0.15);
   border: 1px solid #ddeafc
 }
+
 
 .card-grid {
   display: grid;
