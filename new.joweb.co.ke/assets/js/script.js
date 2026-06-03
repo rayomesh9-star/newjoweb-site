@@ -45,19 +45,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const isOpen = siteNav.getAttribute('data-open') === 'true';
 
     if (isOpen) {
-      siteNav.style.display = 'none';
-      siteNav.style.pointerEvents = 'none';
       siteNav.setAttribute('data-open', 'false');
       navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.classList.remove('active');
+
+      siteNav.style.display = 'none';
+      siteNav.style.pointerEvents = 'none';
       return;
     }
 
-    // closing any other opened state (if needed)
-    siteNav.style.display = 'flex';
-    siteNav.style.pointerEvents = 'auto';
     siteNav.setAttribute('data-open', 'true');
     navToggle.setAttribute('aria-expanded', 'true');
     navToggle.classList.add('active');
+
+    siteNav.style.display = 'flex';
+    siteNav.style.pointerEvents = 'auto';
   });
 })();
 
