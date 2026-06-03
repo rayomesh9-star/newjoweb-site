@@ -123,10 +123,23 @@ ul {
   background: rgba(255, 255, 255, .97);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  z-index: 1000;
+  z-index: 5000;
   box-shadow: 0 2px 30px rgba(10, 77, 140, .06);
-  border-bottom: 1px solid rgba(10, 77, 140, .04)
+  border-bottom: 1px solid rgba(10, 77, 140, .04);
 }
+
+/* Ensure header controls are always on top and clickable */
+.site-header .nav,
+.site-header .site-nav,
+.site-header .dropdown,
+.site-header .dropdown-content,
+.site-header .nav-toggle,
+.site-header #navToggle {
+  position: relative;
+  z-index: 5001;
+  pointer-events: auto;
+}
+
 
 main {
   padding-top: 0
@@ -151,7 +164,7 @@ main {
   justify-content: space-between;
   gap: 1.5rem;
   padding: 1.2rem 0;
-  width: 100%;
+  width: 100%
 }
 
 .brand {
@@ -163,11 +176,11 @@ main {
   color: var(--text);
   transition: color .3s ease;
   flex-shrink: 0;
-  letter-spacing: -.3px;
+  letter-spacing: -.3px
 }
 
 .brand:hover {
-  color: var(--brand);
+  color: var(--brand)
 }
 
 .site-nav {
@@ -243,6 +256,13 @@ main {
   z-index: 3000;
   pointer-events: auto;
 }
+
+/* Ensure hamburger always receives taps/clicks (some pages have extra positioned elements) */
+#navToggle {
+  pointer-events: auto !important;
+  z-index: 3000 !important;
+} 
+
 
 .nav-toggle:hover {
   background: rgba(10, 77, 140, .12)
@@ -680,7 +700,7 @@ main {
   }
 
   .site-nav {
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     background: #fff;
@@ -693,22 +713,28 @@ main {
     border-radius: 1rem;
     box-shadow: 0 20px 40px rgba(10, 77, 140, .12);
     z-index: 2003;
-    transition: opacity .2s ease, transform .2s ease;
-    transform-origin: top right;
 
-    /* when hidden it shouldn't block clicks */
+    /* Animated hamburger dropdown (no display:none) */
+    opacity: 0;
+    transform: translateY(-28px) scale(0.98);
+    transform-origin: top right;
+    transition: opacity .25s ease, transform .25s ease;
     pointer-events: none;
   }
 
-  .site-nav[style*="display: flex"] {
+  /* When open, animate smoothly */
+  #siteNav[data-open="true"] {
+    opacity: 1;
+    transform: translateY(0) scale(1);
     pointer-events: auto;
   }
 
-  /* When shown, animate the dropdown sliding in smoothly */
-  #siteNav[style*="display: flex"] {
-    opacity: 1;
-    transform: translateY(0);
+  /* Make sure the nav container still takes layout on mobile */
+  #siteNav {
+    display: flex;
   }
+
+
 
 
   .site-nav a {
@@ -748,10 +774,25 @@ main {
     margin-top: 1rem;
   }
 
+  /* Services pages use their own grid classes in-line; enforce stacking */
+  .services-grid,
+  .pricing .cards {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Service detail cards/grids sometimes overflow due to fixed-width rules */
+  .service-grid {
+    grid-template-columns: 1fr !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    gap: 1rem !important;
+  }
+
   /* Make generic cards fit better */
   .card {
     padding: 1rem;
   }
+
 
   /* Forms/cards in content area */
   .form-section,
