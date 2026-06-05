@@ -7,9 +7,8 @@
  * 3. Replace WEB3FORMS_ACCESS_KEY below with your actual key
  */
 
-const WEB3FORMS_ACCESS_KEY = "ce211cd6-79a0-4fcc-ba81-6a9145ce5b46";
+const WEB3FORMS_ACCESS_KEY = "4d26daf7-2b44-44a0-a936-06fa6dbd3f8b";
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
-const DESTINATION_EMAIL = "omegor6@gmail.com";
 
 /**
  * Send form data via Web3Forms

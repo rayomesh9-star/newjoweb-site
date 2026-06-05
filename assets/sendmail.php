@@ -7,10 +7,14 @@ require 'phpmailer/src/PHPMailer.php';
 require 'phpmailer/src/SMTP.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = htmlspecialchars($_POST['name']);
-    $email = htmlspecialchars($_POST['email']);
+    $name = htmlspecialchars($_POST['name'] ?? $_POST['contact'] ?? "");
+    $email = htmlspecialchars($_POST['email'] ?? "");
+    $phone = htmlspecialchars($_POST['phone'] ?? "");
     $subjectLine = isset($_POST['subject']) ? htmlspecialchars($_POST['subject']) : "General Inquiry";
-    $message = htmlspecialchars($_POST['message']);
+    $company = htmlspecialchars($_POST['company'] ?? "");
+    $services = htmlspecialchars($_POST['services'] ?? "");
+    $budget = htmlspecialchars($_POST['budget'] ?? "");
+    $message = htmlspecialchars($_POST['message'] ?? $_POST['details'] ?? "");
 
     // Capture the page user submitted from
     $redirectPage = isset($_POST['redirect']) ? $_POST['redirect'] : 'index.php';
@@ -29,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Recipients
         $mail->setFrom('noreply@joweb.co.ke', 'Joweb Website');
-        $mail->addAddress('info@joweb.co.ke'); 
+        $mail->addAddress('sales@joweb.co.ke');
 
         // Content
         $mail->isHTML(true);
@@ -38,6 +42,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h2>New Website Request</h2>
             <p><strong>Name:</strong> $name</p>
             <p><strong>Email:</strong> $email</p>
+            <p><strong>Phone:</strong> $phone</p>
+            <p><strong>Company:</strong> $company</p>
+            <p><strong>Services:</strong> $services</p>
+            <p><strong>Budget:</strong> $budget</p>
             <p><strong>Subject:</strong> $subjectLine</p>
             <p><strong>Message:</strong><br>$message</p>
         ";
