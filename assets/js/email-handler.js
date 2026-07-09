@@ -9,6 +9,7 @@
 
 const WEB3FORMS_ACCESS_KEY = "4d26daf7-2b44-44a0-a936-06fa6dbd3f8b";
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+const DESTINATION_EMAIL = "sales@joweb.co.ke";
 
 /**
  * Send form data via Web3Forms
