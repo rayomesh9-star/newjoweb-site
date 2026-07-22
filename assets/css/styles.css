@@ -1447,7 +1447,7 @@ main {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  background: linear-gradient(135deg, #073a66, #0a5a99);
+  background: #f4f6fb;
   border-radius: .75rem;
   margin-bottom: .9rem;
   display: flex;
@@ -1456,18 +1456,37 @@ main {
   overflow: hidden
 }
 
+.video-logo {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  opacity: .9;
+  transition: transform .4s cubic-bezier(.4, 0, .2, 1), opacity .35s ease
+}
+
 .play-icon {
-  width: 50px;
-  height: 50px;
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  bottom: 12px;
+  right: 12px;
   color: #fff;
+  background: rgba(7, 58, 102, 0.85);
+  border-radius: 50%;
+  padding: 10px;
   opacity: .95;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .35));
-  transition: transform .35s cubic-bezier(.4, 0, .2, 1), opacity .35s ease
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+  transition: transform .35s cubic-bezier(.4, 0, .2, 1), background .35s ease
+}
+
+.video-card:hover .video-logo {
+  transform: scale(1.05);
+  opacity: 1
 }
 
 .video-card:hover .play-icon {
   transform: scale(1.15);
-  opacity: 1
+  background: rgba(10, 77, 140, 0.95)
 }
 
 /* Hero Banner */
