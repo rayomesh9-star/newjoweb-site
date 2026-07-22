@@ -1942,25 +1942,7 @@ main {
   height: 100%;
   overflow: hidden;
   width: 100%;
-  max-width: 280px;
-  position: relative
-}
-
-.category-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 55%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0), #fff);
-  pointer-events: none;
-  opacity: 0.55;
-  transition: opacity .3s ease
-}
-
-.category-card:hover::after {
-  opacity: 0.85
+  max-width: 280px
 }
 
 .category-card:hover {
