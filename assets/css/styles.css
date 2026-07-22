@@ -564,17 +564,40 @@ main {
 
 .features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   margin: 2rem auto;
-  justify-content: center;
-  justify-items: center;
+  max-width: 1200px;
+  padding: 0 1rem;
 }
 
-/* Ensure 2 rows: first row has 3 cards, second row has 2 cards */
-.features .service-card:nth-child(4),
-.features .service-card:nth-child(5) {
+.features .service-card {
   grid-column: span 1;
+}
+
+.features .video-card {
+  grid-column: span 2;
+}
+
+@media (max-width: 900px) {
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .features .video-card {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .features .service-card,
+  .features .video-card {
+    grid-column: span 1;
+  }
 }
 
 .cta .cta-inner {
