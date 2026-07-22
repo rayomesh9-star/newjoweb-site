@@ -19,7 +19,30 @@ body {
   padding: 0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--brand);
-  background: #fff
+  background: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column
+}
+
+section {
+  padding: 4rem 0
+}
+
+h1 {
+  letter-spacing: -0.3px
+}
+
+p {
+  line-height: 1.8
+}
+
+main {
+  flex: 1
+}
+
+.site-footer {
+  margin-top: auto
 }
 
 @keyframes fadeInPage {
@@ -149,6 +172,11 @@ ul {
   transform: translateY(-3px);
   box-shadow: 0 12px 30px rgba(15, 178, 229, .45);
   filter: brightness(1.12)
+}
+
+.btn:not(.btn-primary):hover {
+  border: 2px solid var(--brand-2);
+  box-shadow: 0 0 18px rgba(15, 178, 229, .35)
 }
 
 /* Keep the nav Request a Quote button visible & glowing like other pages */
@@ -418,6 +446,8 @@ main {
   gap: 1.5rem;
   margin: 1.5rem auto 2rem;
   justify-items: center;
+  max-width: 960px;
+  padding: 0 1rem;
 }
 
 
@@ -598,11 +628,28 @@ main {
   margin: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between
+  justify-content: space-between;
+  background: #fff;
+  border: 2px solid #e6eefb;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .05);
+  transition: transform .4s cubic-bezier(.4, 0, .2, 1), box-shadow .4s cubic-bezier(.4, 0, .2, 1), border-color .4s ease;
+  text-align: center;
+  height: 100%
+}
+
+.gallery figure:hover {
+  transform: translateY(-6px);
+  border-color: var(--brand);
+  box-shadow: 0 16px 34px rgba(10, 77, 140, .22)
 }
 
 .gallery figcaption {
-  padding: .6rem
+  padding: .6rem 0 0;
+  font-weight: 700;
+  color: var(--brand-2);
+  letter-spacing: 0.2px
 }
 
 /* Transport & Logistics gallery caption alignment */
@@ -685,7 +732,6 @@ main {
 
 /* Footer */
 .site-footer {
-  margin-top: 3rem;
   padding: 2rem 0;
   background: #0b1220;
   color: #c8d2e3
@@ -703,7 +749,9 @@ main {
 .footer-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1.2fr;
-  gap: 1rem
+  gap: 1rem;
+  max-width: 1100px;
+  margin: 0 auto
 }
 
 .site-footer h4 {
@@ -1121,15 +1169,17 @@ main {
 }
 
 
-/* Floating Social Buttons with Custom Icons */
-.floating-socials {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  z-index: 1000;
+@keyframes floatPulse {
+  0%, 100% {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3)
+  }
+  50% {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3), 0 0 0 10px rgba(37, 211, 102, 0)
+  }
+}
+
+.floating-socials a:first-child {
+  animation: floatPulse 2.5s ease-in-out infinite
 }
 
 .float-btn {
@@ -1152,8 +1202,9 @@ main {
 }
 
 .float-btn:hover {
-  transform: scale(1.1);
-  opacity: 0.9;
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 8px 22px rgba(10, 77, 140, 0.35);
+  background: #fff
 }
 
 /* Mobile-friendly adjustments */
@@ -1863,7 +1914,7 @@ main {
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   justify-content: center;
-  justify-items: stretch;
+  justify-items: center;
   align-items: stretch;
   max-width: 960px;
   margin: 2rem auto;
@@ -1884,6 +1935,26 @@ main {
   transition: all 0.3s ease;
   height: 100%;
   overflow: hidden;
+  width: 100%;
+  max-width: 280px;
+  position: relative
+}
+
+.category-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0), #fff);
+  pointer-events: none;
+  opacity: 0.55;
+  transition: opacity .3s ease
+}
+
+.category-card:hover::after {
+  opacity: 0.85
 }
 
 .category-card:hover {
