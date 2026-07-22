@@ -1169,6 +1169,17 @@ main {
 }
 
 
+/* Floating Social Buttons with Custom Icons */
+.floating-socials {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 1000;
+}
+
 @keyframes floatPulse {
   0%, 100% {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3)
@@ -1190,7 +1201,6 @@ main {
   justify-content: center;
   border-radius: 50%;
   background: #fff;
-  /* white background for consistency */
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
   transition: transform .4s cubic-bezier(.4, 0, .2, 1), opacity .4s ease;
 }
@@ -1218,10 +1228,6 @@ main {
     bottom: 15px;
     right: 15px;
     gap: 10px;
-  }
-
-  .about-card {
-    padding: 0.875rem;
   }
 }
 
