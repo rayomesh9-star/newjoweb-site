@@ -19,8 +19,7 @@ body {
   padding: 0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--brand);
-  background: #fff;
-  animation: fadeInPage .5s ease-out
+  background: #fff
 }
 
 @keyframes fadeInPage {
@@ -31,6 +30,23 @@ body {
   to {
     opacity: 1
   }
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(18px)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
+
+.page-transition main,
+main {
+  animation: slideUpFade .55s cubic-bezier(.4, 0, .2, 1) both
 }
 
 img {
@@ -572,10 +588,10 @@ main {
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(4, auto);
-  gap: 2.5rem;
-  justify-content: space-evenly;
-  margin-bottom: 2.5rem
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  justify-items: stretch
 }
 
 .gallery figure {
@@ -892,7 +908,7 @@ main {
 @media (max-width: 600px) {
   /* Make gallery cards larger and prevent cramped layouts */
   .gallery {
-    grid-template-columns: repeat(1, 1fr) !important;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 1.25rem;
   }
 
