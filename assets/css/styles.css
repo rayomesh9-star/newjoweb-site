@@ -580,6 +580,14 @@ main {
   grid-column: 3;
 }
 
+.last-row {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
 .features .service-card {
   grid-column: span 1;
 }
