@@ -564,13 +564,20 @@ main {
 
 .features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   margin: 2rem auto;
-  max-width: 900px;
+  max-width: 960px;
   padding: 0 1rem;
-  justify-content: center;
   justify-items: center;
+}
+
+.features .service-card:nth-child(4) {
+  grid-column: 2;
+}
+
+.features .service-card:nth-child(5) {
+  grid-column: 3;
 }
 
 .features .service-card {
